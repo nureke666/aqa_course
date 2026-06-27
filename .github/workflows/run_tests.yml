@@ -61,3 +61,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages # Ветка, где будет лежать сайт
           publish_dir: allure-history # Что именно публикуем
+          force_orphan: true
