@@ -1,0 +1,63 @@
+name: Автотесты и Allure Отчет
+
+# Запускать скрипт при каждом пуше в ветку main (или master)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Сервер на Linux
+
+    steps:
+      # 1. Сервер скачивает твой код
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Сервер устанавливает Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      # 3. Сервер устанавливает нужные библиотеки
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest allure-pytest
+
+      # 4. Запускаем сами тесты!
+      # continue-on-error: true ВАЖНО! Если тесты упадут, сервер не должен останавливаться, он должен пойти генерировать отчет!
+      - name: Run tests
+        run: pytest test_magic.py --alluredir=allure-results
+        continue-on-error: true
+
+      # 5. Магия сохранения истории. Сервер скачивает старую историю из ветки gh-pages
+      - name: Get Allure history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      # 6. Генерируем красивый отчет (с историей) с помощью готового экшена
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure-results: allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+
+      # 7. Публикуем сгенерированный отчет на GitHub Pages (бесплатный хостинг)
+      - name: Deploy report to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages # Ветка, где будет лежать сайт
+          publish_dir: allure-history # Что именно публикуем

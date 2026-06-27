@@ -1,0 +1,1 @@
+[{"uid":"cbe5459962730360","name":"Успешный тест (тут ничего не прикрепится)","time":{"start":1782546529810,"stop":1782546529810,"duration":0},"status":"passed","severity":"normal"},{"uid":"95c59f6ac01cb74b","name":"Упавший тест (здесь сработает магия из conftest.py)","time":{"start":1782546529812,"stop":1782546529812,"duration":0},"status":"passed","severity":"normal"}]
