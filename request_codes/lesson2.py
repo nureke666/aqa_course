@@ -10,4 +10,4 @@ data = response.json()
 print(data)
 
 print(len(data))
-print(data[0]['title'])
+print(data[0]["title"])

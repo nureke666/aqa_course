@@ -1,5 +1,4 @@
 import requests
-import pytest
 from jsonschema import validate
 
 user_schema = {
@@ -9,8 +8,9 @@ user_schema = {
         "name": {"type": "string"},
         "email": {"type": "string"},
     },
-    "required": ["id", "name", "email"]
+    "required": ["id", "name", "email"],
 }
+
 
 def test_user_schema():
     response = requests.get("https://jsonplaceholder.typicode.com/users/1")

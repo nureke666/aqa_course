@@ -1,6 +1,6 @@
-import pytest
 import requests
 from pydantic import BaseModel, Field
+
 
 class User(BaseModel):
     id: int
@@ -10,6 +10,7 @@ class User(BaseModel):
     last_name: str = Field(alias="lastName")
     gender: str
     image: str | None = None
+
 
 def test_login_and_get_profile():
     URL = "https://dummyjson.com/auth/login"
@@ -29,7 +30,6 @@ def test_login_and_get_profile():
     assert response.status_code == 200
     data2 = response.json()
     print(data)
-    user = User.model_validate(data2)
     assert data2["username"] == "emilys"
     assert data2["lastName"] == "Johnson"
 

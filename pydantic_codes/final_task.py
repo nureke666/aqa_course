@@ -2,12 +2,15 @@ import requests
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import BaseModel, field_validator
 
+
 class Setting(BaseSettings):
     base_url: str
 
-    model_config = SettingsConfigDict(env_file='.env')
+    model_config = SettingsConfigDict(env_file=".env")
+
 
 config = Setting()
+
 
 class UserData(BaseModel):
     id: int
@@ -23,13 +26,16 @@ class UserData(BaseModel):
             raise ValueError("Not correct email")
         return value
 
+
 class SupportData(BaseModel):
     url: str
     text: str
 
+
 class UserResponse(BaseModel):
     data: UserData
     support: SupportData
+
 
 def test_request():
     response = requests.get(config.base_url)

@@ -1,6 +1,6 @@
 import requests
 
-URL = 'https://jsonplaceholder.typicode.com/posts/1'
+URL = "https://jsonplaceholder.typicode.com/posts/1"
 
 
 def test_update_post():
@@ -19,7 +19,9 @@ def test_update_post():
 
 def test_delete_post():
     response = requests.delete(URL)
-    assert response.status_code in (200, 204), f"Неожиданный код: {response.status_code}"
+    assert response.status_code in (200, 204), (
+        f"Неожиданный код: {response.status_code}"
+    )
 
     data = response.json()
     assert data == {}

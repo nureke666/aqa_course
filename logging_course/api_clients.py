@@ -3,6 +3,7 @@ from my_logger import get_my_custom_logger
 
 logger = get_my_custom_logger(__name__)
 
+
 def api_call(method: str, url: str, **kwargs):
     logger.info(f"[REQUEST] => {method.upper()} {url}")
     if kwargs:

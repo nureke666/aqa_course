@@ -1,6 +1,6 @@
-import pytest
 import os
 import requests
+
 
 def test_download_avatar():
     response = requests.get("https://dummyjson.com/icon/emilys/128")

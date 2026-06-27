@@ -1,6 +1,7 @@
 import requests
 import pytest
 
+
 @pytest.fixture()
 def api_client():
     session = requests.Session()

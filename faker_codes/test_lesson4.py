@@ -4,6 +4,7 @@ from faker import Faker
 faker = Faker()
 role = ("admin", "manager", "customer")
 
+
 @pytest.fixture
 def generate_users():
     users_list = []

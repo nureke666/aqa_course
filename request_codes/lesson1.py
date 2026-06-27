@@ -6,4 +6,4 @@ print(response.status_code)
 data = response.json()
 print(data)
 
-print(data['name'])
+print(data["name"])

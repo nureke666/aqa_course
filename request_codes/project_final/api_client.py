@@ -1,5 +1,6 @@
 import requests
 
+
 class APIClient:
     def __init__(self):
         # Базовый URL хранится в одном месте!

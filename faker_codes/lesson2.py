@@ -1,7 +1,7 @@
 from faker import Faker
 
 Faker.seed(777)
-faker = Faker(locale='ru_RU')
+faker = Faker(locale="ru_RU")
 
 registration_data = {
     "full_name": faker.name() + faker.last_name(),

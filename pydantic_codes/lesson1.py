@@ -1,11 +1,12 @@
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel
 
 book_data = {
     "title": "Гарри Поттер и философский камень",
     "pages": 332,
     "rating": 4.8,
-    "is_bestseller": True
+    "is_bestseller": True,
 }
+
 
 class Book(BaseModel):
     title: str

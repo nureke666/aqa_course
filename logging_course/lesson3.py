@@ -6,7 +6,9 @@ logger.setLevel(logging.DEBUG)
 console_handler = logging.StreamHandler()
 file_handler = logging.FileHandler("test_run.log")
 
-formatter = logging.Formatter("[%(asctime)s] [%(levelname)s] [%(filename)s] => %(message)s")
+formatter = logging.Formatter(
+    "[%(asctime)s] [%(levelname)s] [%(filename)s] => %(message)s"
+)
 
 console_handler.setFormatter(formatter)
 file_handler.setFormatter(formatter)
